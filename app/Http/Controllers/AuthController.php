@@ -13,7 +13,7 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-{
+    {
     try {
         $request->validate([
             'email' => 'required|email',
@@ -26,6 +26,9 @@ class AuthController extends Controller
 
             return view('dashboard');
         }
+        
+            return view('errors.login-error');
+
     } catch (\Exception $e) {
         $errorMessages = [
             'email' => '',
@@ -43,9 +46,7 @@ class AuthController extends Controller
                    
                 ]);
            
-            }
-
-            if ($errors->has('password')) {
+            }if ($errors->has('password')) {
                 $errorMessages['password'] = '<div class="italic text-left text-red-500 text-sm">' . $errors->first('password') . '</div>';
                 
                 return view('errors.password-error', [
@@ -55,15 +56,16 @@ class AuthController extends Controller
             
             } 
             
-
+        
           
 
         } elseif ($e instanceof \Exception) {
-            return view('partials.login-error')->with('errorMessage', $e->getMessage());
+            return view('errors.login-error');
         }
 
-        return view('partials.login-error');
+        return view('errors.login-error');
     }
+
 }
 
     public function logout(Request $request)

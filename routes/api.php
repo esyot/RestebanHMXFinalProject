@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,16 @@ use App\Http\Controllers\AuthController;
 //});
 
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::delete('/products/{product}', [ProductController::class, 'delete']);
+
+Route::post('/create', [ProductController::class, 'store']);
+
+Route::middleware('auth:sanctum')->delete('/delete/{product}', [ProductController::class, 'delete']);
+
+
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
+
 Route::middleware('auth:sanctum')->get('/dashboard', function () {
     return response()->json(['message' => 'Welcome to the Dashboard!']);
 });
