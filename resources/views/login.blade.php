@@ -2,9 +2,6 @@
 
 @section('content')
 
-
 @include('partials.login-form')
-
-
-
+    
 @endsection
