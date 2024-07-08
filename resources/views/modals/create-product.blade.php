@@ -1,7 +1,7 @@
 <div id="createProductModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 hidden">
-    <!-- Modal Content -->
+
     <div class="bg-white rounded-lg shadow-lg w-1/3 p-6">
-        <!-- Modal Header -->
+     
         <div class="flex justify-between items-center border-b pb-2 mb-4">
             <h3 class="text-xl font-semibold text-gray-800">Create Product</h3>
             <button class="text-gray-600 hover:text-gray-800" onclick="closeModal()">
@@ -11,9 +11,9 @@
             </button>
         </div>
 
-        <form hx-post="api/create" hx-target="#products-list" hx-swap="innerHTML swap:1.1s" hx-trigger="submit">
+        <form hx-post="api/create" hx-target="#products-list" hx-swap="innerHTML" hx-trigger="submit">
             @csrf
-            <!-- Modal Body -->
+           
             <div class="mb-4">
                 <label for="name">Name: </label>
                 <input type="text" name="name" id="name" class="py-2 px-2 rounded border border-gray-500 w-[100%]" placeholder="Input product name">
@@ -45,10 +45,6 @@
             </div>
 
             <div id="message"></div>
-
-        
-       
-
   
             <div class="flex justify-end space-x-1 p-2 border-t">
                 <button class="py-2 px-2 bg-blue-500 text-white hover:bg-blue-800 rounded" type="submit">Submit</button>

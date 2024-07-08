@@ -10,5 +10,11 @@
 
 @include('inclusions.products-list')
 
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let products = @json($products);
+        let latestProduct = products.reduce((max, prod) => prod.id > max.id ? prod : max, products[0]);
+        document.getElementById('product' + latestProduct.id).classList.add('fade-me-in');
+    });
+</script>
 @endsection
