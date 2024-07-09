@@ -20,7 +20,7 @@
         <li>Brand: <i class="text-red-500">{{$prod->brand}}</i></li>
         <li>Description: <i class="text-red-500">{{$prod->description}}</i></li>
         <li>Price: <i class="text-red-500">₱{{$prod->price}}</i></li>
-        <li>Quantity: <i class="text-red-500">{{$prod->quantity}}</i></li>
+        <li>Quantity: <i class="text-red-500">{{$prod->quantity}} pcs.</i></li>
     </ul>
    
 </div>

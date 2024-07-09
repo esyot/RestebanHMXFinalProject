@@ -20,12 +20,12 @@
 
         @yield('error-message')
 
-        <div class="flex justify-between">
-            <button type="submit" class="py-2 px-6 rounded bg-blue-600 hover:bg-blue-700 text-white font-bold transition duration-200 ease-in-out">
+        <div class="flex justify-end">
+            <button type="submit" class="py-2 px-6 ml-2 rounded bg-blue-600 hover:bg-blue-700 text-white font-bold transition duration-200 ease-in-out">
                 Login
             </button>
 
-            <button type="button" class="py-2 px-6 rounded bg-green-600 hover:bg-green-700 text-white font-bold transition duration-200 ease-in-out">
+            <button type="button" class="py-2 px-6 ml-2 rounded bg-green-600 hover:bg-green-700 text-white font-bold transition duration-200 ease-in-out">
                 Sign-Up
             </button>
         </div>
