@@ -14,8 +14,17 @@
         </div>
         <!-- Modal Body -->
         <div class="mb-4">
-            <p class="text-gray-700">You are going to delete this item? This action cannot be undone</p>
-        </div>
+    <p class="text-gray-700">You are going to delete this item:</p>
+    <ul class="list-disc list-inside text-gray-700 ml-6">
+        <li>Name: <i class="text-red-500">{{$prod->name}}</i></li>
+        <li>Brand: <i class="text-red-500">{{$prod->brand}}</i></li>
+        <li>Description: <i class="text-red-500">{{$prod->description}}</i></li>
+        <li>Price: <i class="text-red-500">₱{{$prod->price}}</i></li>
+        <li>Quantity: <i class="text-red-500">{{$prod->quantity}}</i></li>
+    </ul>
+   
+</div>
+
         <!-- Modal Footer -->
         <div class="flex justify-end space-x-4">
 

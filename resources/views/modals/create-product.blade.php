@@ -68,5 +68,10 @@
         document.getElementById('quantity').value = '';
         
         document.getElementById('message').classList.add('hidden');
+        document.getElementById('name-error').classList.add('hidden');
+        document.getElementById('brand-error').classList.add('hidden');
+        document.getElementById('description-error').classList.add('hidden');
+        document.getElementById('price-error').classList.add('hidden');
+        document.getElementById('quantity-error').classList.add('hidden');
     }
 </script>

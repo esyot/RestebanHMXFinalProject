@@ -61,8 +61,32 @@ class ProductController extends Controller
 
         $successMessage .= '<div id="message" hx-swap-oob="true" class="py-2 px-2 text-center bg-green-200 text-green-500 rounded m-2">Product has been successfully Added!</div>';
 
-        $html = view('inclusions.products-list', compact('products'))->render();
-        return $html . $errorMessageHTML . $successMessage;
+        
+        $latestProduct = Product::latest('id')->first();
+
+        if ($latestProduct) {
+            $modal = view('modals.confirm-delete', ['prod' => $latestProduct])->render();
+        
+            $html = '
+            <div id="product'.$latestProduct->id.'" class="p-6 bg-gray-200 rounded-lg shadow fade-me-out fade-me-in">
+                <h2 class="text-[30px] font-bold mb-2">'.$latestProduct->name.'</h2>
+                <p class="text-gray-700">Description: '.$latestProduct->description.'</p>
+                <p class="text-gray-700">Price: ₱'.$latestProduct->price.'</p>
+                <p class="text-gray-700">Quantity: '.$latestProduct->quantity.'</p>
+                <button onclick="document.getElementById(\'confirmDelete'.$latestProduct->id.'\').classList.remove(\'hidden\')" 
+                        class="bg-red-500 text-white shadow-md rounded hover:bg-red-800 px-2 py-2 p-2 m-2">delete</button>
+            </div>
+            '.$modal;
+        } else {
+            $html = 'No products found.';
+        }
+
+
+        $products = Product::where('id', '!=', $latestProduct->id)->orderBy('created_at', 'DESC')->get();
+
+        $allprod = view('inclusions.products-list', compact('products'))->render();
+        
+        return $html . $allprod . $errorMessageHTML . $successMessage;
 
     } catch (\Exception $e) {
         $errorMessages = [
@@ -95,7 +119,9 @@ class ProductController extends Controller
             $errorMessage .= '<div id="message" hx-swap-oob="true" class="py-2 px-2 text-center bg-red-200 text-red-500 rounded m-2">Product Error!</div>';
 
             $products = Product::orderBy('created_at', 'DESC')->get();
+
             $html = view('inclusions.products-list', compact('products'))->render();
+
             return $html . $errorMessageHTML . $errorMessage;
 
         } else {
